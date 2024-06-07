@@ -1,0 +1,23 @@
+.stars {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2rem;
+  color: grey;
+  cursor: pointer;
+}
+
+.stars input:checked ~ label {
+  color: gold;
+}
+
+.stars input:hover ~ label {
+  color: gold;
+}/*# sourceMappingURL=style.css.map */
