@@ -1,21 +1,16 @@
 <?php
-session_start();
-
 $username = $_POST['username']; 
 $email = $_POST['email']; 
 $message = $_POST['message']; 
-
+$assessment = $_POST['assessment'];
 
 $connectDataBase = new PDO("mysql:host=db;dbname=wordpress", "root", "admin");
 
-
-$createRequest = $connectDataBase->prepare("INSERT INTO users (username, email, id, message) VALUES (:username, :email,:id,:message)");
+$createRequest = $connectDataBase->prepare("INSERT INTO users (username, email, message, assessment) VALUES (:username, :email, :message, :assessment)");
 $createRequest->bindParam(':username', $username);
 $createRequest->bindParam(':email', $email);
-
+$createRequest->bindParam(':assessment', $assessment);
 $createRequest->bindParam(':message', $message);
-
-$createRequest->bindParam(':id', $_SESSION['id']);
 
 $createRequest->execute();
 
